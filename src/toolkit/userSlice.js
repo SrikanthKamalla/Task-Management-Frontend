@@ -7,7 +7,6 @@ const initialState = {
     email: "",
     userId: "",
   },
-  transactionsState: [],
 };
 
 export const fetchUser = createAsyncThunk("user/fetchUser", async (func) => {
@@ -51,9 +50,6 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
-    },
-    setTransactionsState: (state, action) => {
-      state.transactionsState = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -99,6 +95,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, setTransactionsState } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 
 export default userSlice.reducer;

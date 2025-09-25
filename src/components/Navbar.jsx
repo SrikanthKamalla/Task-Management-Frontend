@@ -8,7 +8,10 @@ import {
   X,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfo } from "../services/auth";
+import { getAuthToken } from "../helpers/localstorage";
+import { fetchUser } from "../toolkit/userSlice";
 
 const Navbar = ({ isOpen, setIsOpen }) => {
   const location = useLocation();
@@ -21,7 +24,14 @@ const Navbar = ({ isOpen, setIsOpen }) => {
     { name: "Dashboard", icon: LayoutDashboard, path: "/" },
     { name: "Tasks", icon: ListTodo, path: "/tasks" },
   ];
+  const token = getAuthToken();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUser(getUserInfo));
+    }
+  }, [dispatch, token]);
   useEffect(() => {
     setActivePath(location.pathname);
   }, [location.pathname]);
@@ -33,7 +43,6 @@ const Navbar = ({ isOpen, setIsOpen }) => {
 
   return (
     <>
-      {/* Overlay for mobile when sidebar is open */}
       <div
         className={`fixed inset-0 bg-[rgba(0,0,0,0.4)] z-20 transition-opacity md:hidden ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -41,18 +50,15 @@ const Navbar = ({ isOpen, setIsOpen }) => {
         onClick={() => setIsOpen(false)}
       ></div>
 
-      {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-screen w-64 bg-blue-600 text-gray-100 flex flex-col z-40 transform transition-transform duration-300
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
         md:translate-x-0`}
       >
-        {/* Logo */}
         <div className="p-4 text-lg font-bold border-b border-blue-600">
           Task Manager
         </div>
 
-        {/* Menu Items */}
         <div className="flex-1 overflow-y-auto p-2">
           {menuItems.map((item) => {
             const Icon = item.icon;
@@ -79,7 +85,6 @@ const Navbar = ({ isOpen, setIsOpen }) => {
           })}
         </div>
 
-        {/* Logout */}
         <div className="p-4 border-t border-gray-800">
           <div className="flex items-center gap-3 w-full text-left text-gray-300 hover:text-white px-4 py-2 rounded-md">
             <CircleUserRound />
