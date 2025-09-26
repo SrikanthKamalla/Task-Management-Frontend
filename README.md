@@ -1,16 +1,81 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Task Management App 
+<a href="https://task-management-frontend-alpha-one.vercel.app/">Live Demo</a>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- ✅ Responsive UI (TailwindCSS)
+- ✅ Authentication (Login, Signup, Logout)
+- ✅ Protected Routes (JWT-based auth)
+- ✅ Dashboard with CRUD operations on tasks (create, view, update, delete)
+- ✅ User profile fetch & update
+- ✅ Search and filter tasks
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Client:** React, Redux, TailwindCSS
+
+**Server:** Node, Express, mongoDB
+
+
+
+## Installation
+
+### Project Setup
+
+#### Prerequisites
+- Node.js
+- npm 
+- MongoDB
+
+### Install my-project
+#### Frontend
+  - git clone https://github.com/SrikanthKamalla/Task-Management-Frontend
+  - cd "folder name"
+  - npm i
+  - npm run dev
+
+#### Backend
+ - git clone https://github.com/SrikanthKamalla/Task-Management-Backend
+  - cd "folder name"
+  - npm i
+  - npm run dev
+
+
+## Environment Variables
+#### Frontend
+```
+  VITE_API_URL ->your backend url 
+```
+#### Backend
+```
+  PORT
+  MONGODB_URI
+  JWT_SECRET_KEY
+  FRONTEND_URL
+```
+
+## Pages & Functionality
+### Login & Signup
+
+- Secure authentication for trustees, school admins.
+- JWT-based session management.
+
+### Dashboard
+
+Displays key statistics:
+
+- Total tasks.
+
+- Shows completed, pending and task priorities.
+
+
+### Tasks
+
+- Add task with priorities and due date.
+- We can see all Tasks in this page.
+- Search tasks based on search input, status and priorities.
